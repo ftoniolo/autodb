@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="br.com.autodb_autodb_war_1.0-SNAPSHOTPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>br.com.autodb.model.dao.TipoCabecote</class>
+    <class>br.com.autodb.model.dao.Qualificador</class>
+    <class>br.com.autodb.model.dao.FabricanteProduto</class>
+    <class>br.com.autodb.model.dao.SistemaDirecao</class>
+    <class>br.com.autodb.model.dao.ConfiguracaoFreio</class>
+    <class>br.com.autodb.model.dao.QualificadorProduto</class>
+    <class>br.com.autodb.model.dao.Produto</class>
+    <class>br.com.autodb.model.dao.QualificadorAplicacao</class>
+    <class>br.com.autodb.model.dao.TipoAnexo</class>
+    <class>br.com.autodb.model.dao.Pais</class>
+    <class>br.com.autodb.model.dao.VeiculoBase</class>
+    <class>br.com.autodb.model.dao.Aplicacao</class>
+    <class>br.com.autodb.model.dao.TipoCarrocaria</class>
+    <class>br.com.autodb.model.dao.Motor</class>
+    <class>br.com.autodb.model.dao.TipoTracao</class>
+    <class>br.com.autodb.model.dao.Submodelo</class>
+    <class>br.com.autodb.model.dao.Posicao</class>
+    <class>br.com.autodb.model.dao.StatusProduto</class>
+    <class>br.com.autodb.model.dao.Modelo</class>
+    <class>br.com.autodb.model.dao.TipoTransmissao</class>
+    <class>br.com.autodb.model.dao.AnexoVeiculo</class>
+    <class>br.com.autodb.model.dao.TipoMotor</class>
+    <class>br.com.autodb.model.dao.FreioABS</class>
+    <class>br.com.autodb.model.dao.VeiculoBaseRelacionado</class>
+    <class>br.com.autodb.model.dao.TipoAssistenciaFreio</class>
+    <class>br.com.autodb.model.dao.TipoVeiculo</class>
+    <class>br.com.autodb.model.dao.ComponenteProduto</class>
+    <class>br.com.autodb.model.dao.TipoAspiracao</class>
+    <class>br.com.autodb.model.dao.Fabricante</class>
+    <class>br.com.autodb.model.dao.Injecao</class>
+    <class>br.com.autodb.model.dao.Marca</class>
+    <class>br.com.autodb.model.dao.LinhaProduto</class>
+    <class>br.com.autodb.model.dao.Veiculo</class>
+    <class>br.com.autodb.model.dao.UnidadeMedida</class>
+    <class>br.com.autodb.model.dao.CategoriaProduto</class>
+    <class>br.com.autodb.model.dao.TipoFreio</class>
+    <class>br.com.autodb.model.dao.TipoCombustivel</class>
+    <class>br.com.autodb.model.dao.LinhaVeiculo</class>
+    <class>br.com.autodb.model.dao.SubcategoriaProduto</class>
+    <exclude-unlisted-classes>false</exclude-unlisted-classes>
+    <shared-cache-mode>ALL</shared-cache-mode>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://maxima:3306/autodb?zeroDateTimeBehavior=convertToNull"/>
+      <property name="javax.persistence.jdbc.password" value="m6w5d5h3"/>
+      <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+      <property name="javax.persistence.jdbc.user" value="ftoniolo"/>
+      <property name="javax.persistence.schema-generation.database.action" value="create"/>
+    </properties>
+  </persistence-unit>
+  <persistence-unit name="br.com.autodb_autodb_war_1.0-SNAPSHOTPU2" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <exclude-unlisted-classes>false</exclude-unlisted-classes>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://maxima:3306/autodb?zeroDateTimeBehavior=convertToNull"/>
+      <property name="javax.persistence.jdbc.password" value="m6w5d5h3"/>
+      <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+      <property name="javax.persistence.jdbc.user" value="ftoniolo"/>
+    </properties>
+  </persistence-unit>
+</persistence>
