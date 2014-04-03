@@ -119,7 +119,7 @@ public class TipoTransmissao implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.autodb.model.dao.TipoTransmissao[ codigoTipoTransmissao=" + codigoTipoTransmissao + " ]";
+        return tipoTransmissao;
     }
     
 }

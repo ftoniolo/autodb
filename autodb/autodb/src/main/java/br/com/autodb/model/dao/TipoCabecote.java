@@ -98,7 +98,7 @@ public class TipoCabecote implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.autodb.model.dao.TipoCabecote[ codigoTipoCabecote=" + codigoTipoCabecote + " ]";
+        return tipoCabecote;
     }
     
 }

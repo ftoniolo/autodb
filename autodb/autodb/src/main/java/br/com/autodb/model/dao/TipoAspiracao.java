@@ -98,7 +98,7 @@ public class TipoAspiracao implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.autodb.model.dao.TipoAspiracao[ codigoTipoAspiracao=" + codigoTipoAspiracao + " ]";
+        return tipoAspiracao;
     }
     
 }

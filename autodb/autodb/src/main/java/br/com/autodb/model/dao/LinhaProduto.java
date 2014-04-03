@@ -130,7 +130,7 @@ public class LinhaProduto implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.autodb.model.dao.LinhaProduto[ codigoLinhaProduto=" + codigoLinhaProduto + " ]";
+        return linhaProduto;
     }
     
 }

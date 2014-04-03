@@ -98,7 +98,7 @@ public class TipoTracao implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.autodb.model.dao.TipoTracao[ codigoTipoTracao=" + codigoTipoTracao + " ]";
+        return tipoTracao;
     }
     
 }

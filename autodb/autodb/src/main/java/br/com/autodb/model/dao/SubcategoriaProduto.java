@@ -112,7 +112,7 @@ public class SubcategoriaProduto implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.autodb.model.dao.SubcategoriaProduto[ codigoSubcategoriaProduto=" + codigoSubcategoriaProduto + " ]";
+        return subcategoria;
     }
     
 }

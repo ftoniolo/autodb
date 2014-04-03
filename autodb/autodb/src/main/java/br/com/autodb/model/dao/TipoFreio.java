@@ -120,7 +120,7 @@ public class TipoFreio implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.autodb.model.dao.TipoFreio[ codigoTipoFreio=" + codigoTipoFreio + " ]";
+        return tipoFreio;
     }
     
 }

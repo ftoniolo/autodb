@@ -98,7 +98,7 @@ public class SistemaDirecao implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.autodb.model.dao.SistemaDirecao[ codigoSistemaDirecao=" + codigoSistemaDirecao + " ]";
+        return sistemaDirecao;
     }
     
 }

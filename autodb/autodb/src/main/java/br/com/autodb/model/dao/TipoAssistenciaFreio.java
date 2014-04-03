@@ -98,7 +98,7 @@ public class TipoAssistenciaFreio implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.autodb.model.dao.TipoAssistenciaFreio[ codigoTipoAssistenciaFreio=" + codigoTipoAssistenciaFreio + " ]";
+        return tipoAssistenciaFreio;
     }
     
 }

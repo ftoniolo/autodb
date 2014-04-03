@@ -98,7 +98,7 @@ public class Injecao implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.autodb.model.dao.Injecao[ codigoInjecao=" + codigoInjecao + " ]";
+        return injecao;
     }
     
 }

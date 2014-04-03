@@ -98,7 +98,7 @@ public class FreioABS implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.autodb.model.dao.FreioABS[ codigoFreioABS=" + codigoFreioABS + " ]";
+        return freioABS;
     }
     
 }

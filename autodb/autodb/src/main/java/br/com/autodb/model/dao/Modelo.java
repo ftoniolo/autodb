@@ -107,7 +107,7 @@ public class Modelo implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.autodb.model.dao.Modelo[ codigoModelo=" + codigoModelo + " ]";
+        return modelo;
     }
     
 }

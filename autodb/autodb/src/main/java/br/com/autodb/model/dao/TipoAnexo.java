@@ -107,7 +107,7 @@ public class TipoAnexo implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.autodb.model.dao.TipoAnexo[ codigoTipoAnexo=" + codigoTipoAnexo + " ]";
+        return tipoAnexo;
     }
     
 }

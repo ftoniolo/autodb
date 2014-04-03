@@ -110,7 +110,7 @@ public class StatusProduto implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.autodb.model.dao.StatusProduto[ codigoStatusProduto=" + codigoStatusProduto + " ]";
+        return status;
     }
     
 }

@@ -109,7 +109,7 @@ public class Posicao implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.autodb.model.dao.Posicao[ codigoPosicao=" + codigoPosicao + " ]";
+        return posicao;
     }
     
 }

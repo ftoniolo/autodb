@@ -109,7 +109,7 @@ public class TipoCombustivel implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.autodb.model.dao.TipoCombustivel[ codigoTipoCombustivel=" + codigoTipoCombustivel + " ]";
+        return abreviatura;
     }
     
 }

@@ -98,7 +98,7 @@ public class TipoMotor implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.autodb.model.dao.TipoMotor[ codigoTipoMotor=" + codigoTipoMotor + " ]";
+        return tipoMotor;
     }
     
 }

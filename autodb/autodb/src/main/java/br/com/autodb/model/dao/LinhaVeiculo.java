@@ -107,7 +107,7 @@ public class LinhaVeiculo implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.autodb.model.dao.LinhaVeiculo[ codigoLinhaVeiculo=" + codigoLinhaVeiculo + " ]";
+        return linhaVeiculo;
     }
     
 }

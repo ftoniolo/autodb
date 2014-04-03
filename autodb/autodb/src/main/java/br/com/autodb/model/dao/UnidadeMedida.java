@@ -131,7 +131,7 @@ public class UnidadeMedida implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.autodb.model.dao.UnidadeMedida[ codigoUnidadeMedida=" + codigoUnidadeMedida + " ]";
+        return abreviatura;
     }
     
 }

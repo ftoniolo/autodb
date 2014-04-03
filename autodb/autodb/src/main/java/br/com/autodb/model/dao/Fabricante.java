@@ -197,7 +197,7 @@ public class Fabricante implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.autodb.model.dao.Fabricante[ codigoFabricante=" + codigoFabricante + " ]";
+        return fabricante;
     }
     
 }

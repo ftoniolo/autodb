@@ -98,7 +98,7 @@ public class Submodelo implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.autodb.model.dao.Submodelo[ codigoSubmodelo=" + codigoSubmodelo + " ]";
+        return submodelo;
     }
     
 }

@@ -98,7 +98,7 @@ public class CategoriaProduto implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.autodb.model.dao.CategoriaProduto[ codigoCategoriaProduto=" + codigoCategoriaProduto + " ]";
+        return categoria;
     }
     
 }

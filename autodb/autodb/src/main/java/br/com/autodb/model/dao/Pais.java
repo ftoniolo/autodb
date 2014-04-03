@@ -131,7 +131,7 @@ public class Pais implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.autodb.model.dao.Pais[ codigoPais=" + codigoPais + " ]";
+        return pais;
     }
     
 }
