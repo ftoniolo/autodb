@@ -6,8 +6,12 @@
 
 package br.com.autodb.model.dao;
 
+import br.com.autodb.util.MyStringBuilder;
+import br.com.autodb.util.StringBuilderItem;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -200,7 +204,18 @@ public class Veiculo implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.autodb.model.dao.Veiculo[ codigoVeiculo=" + codigoVeiculo + " ]";
+        List<StringBuilderItem> itemList = new ArrayList();
+        
+        itemList.add(new StringBuilderItem(codigoSubmodelo, MyStringBuilder.FORMAT_ALONE));
+        itemList.add(new StringBuilderItem(codigoMotor, MyStringBuilder.FORMAT_SPACE_BEFORE));
+        itemList.add(new StringBuilderItem(codigoTipoTracao, MyStringBuilder.FORMAT_SPACE_BEFORE));
+        itemList.add(new StringBuilderItem(codigoTipoTransmissao, MyStringBuilder.FORMAT_SPACE_BEFORE));
+        itemList.add(new StringBuilderItem(codigoSistemaDirecao, MyStringBuilder.FORMAT_SPACE_BEFORE));
+        itemList.add(new StringBuilderItem(codigoConfiguracaoFreio, MyStringBuilder.FORMAT_SPACE_BEFORE));
+        itemList.add(new StringBuilderItem(codigoPaisFabricacao, MyStringBuilder.FORMAT_SPACE_BEFORE));
+        itemList.add(new StringBuilderItem(periodoFabricacao, MyStringBuilder.FORMAT_SPACE_BEFORE));
+        
+        return MyStringBuilder.format(itemList);
     }
     
 }

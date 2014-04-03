@@ -33,9 +33,6 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Marca.findAll", query = "SELECT m FROM Marca m")})
 public class Marca implements Serializable {
-    @Size(max = 45)
-    @Column(name = "teste")
-    private String teste;
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -115,13 +112,4 @@ public class Marca implements Serializable {
     public String toString() {
         return marca;
     }
-
-    public String getTeste() {
-        return teste;
-    }
-
-    public void setTeste(String teste) {
-        this.teste = teste;
-    }
-    
 }

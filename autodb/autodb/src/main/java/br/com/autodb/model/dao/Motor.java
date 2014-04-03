@@ -6,8 +6,13 @@
 
 package br.com.autodb.model.dao;
 
+import br.com.autodb.util.*;
 import java.io.Serializable;
+import java.text.NumberFormat;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
+import java.util.Locale;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -230,7 +235,23 @@ public class Motor implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.autodb.model.dao.Motor[ codigoMotor=" + codigoMotor + " ]";
+        NumberFormat nf = NumberFormat.getIntegerInstance(Locale.ENGLISH);
+        nf.setMinimumFractionDigits(1);
+        nf.setMaximumFractionDigits(1);
+        List<StringBuilderItem> itemList = new ArrayList();
+        
+        itemList.add(new StringBuilderItem(motor, MyStringBuilder.FORMAT_ALONE));
+        itemList.add(new StringBuilderItem(nf.format(capacidadeVolumetrica), MyStringBuilder.FORMAT_SPACE_BEFORE));
+        itemList.add(new StringBuilderItem(disposicaoCilindros, MyStringBuilder.FORMAT_SPACE_BEFORE, quantidadeCilindros.toString()));
+        itemList.add(new StringBuilderItem(quantidadeValvulas, MyStringBuilder.FORMAT_SPACE_BEFORE, "V"));
+        itemList.add(new StringBuilderItem(codigoTipoCabecote, MyStringBuilder.FORMAT_SPACE_BEFORE));
+        itemList.add(new StringBuilderItem(codigoTipoAspiracao, MyStringBuilder.FORMAT_SPACE_BEFORE));
+        itemList.add(new StringBuilderItem(codigoInjecao, MyStringBuilder.FORMAT_SPACE_BEFORE));
+        itemList.add(new StringBuilderItem(potenciaCV, MyStringBuilder.FORMAT_SPACE_BEFORE, "CV"));
+        itemList.add(new StringBuilderItem(codigoDesignacao, MyStringBuilder.FORMAT_SPACE_BEFORE));
+        itemList.add(new StringBuilderItem(periodo, MyStringBuilder.FORMAT_SPACE_BEFORE));
+
+        return MyStringBuilder.format(itemList);
     }
     
 }

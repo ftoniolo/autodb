@@ -120,7 +120,7 @@ public class TipoFreio implements Serializable {
 
     @Override
     public String toString() {
-        return tipoFreio;
+        return abreviatura;
     }
     
 }

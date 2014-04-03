@@ -6,8 +6,12 @@
 
 package br.com.autodb.model.dao;
 
+import br.com.autodb.util.MyStringBuilder;
+import br.com.autodb.util.StringBuilderItem;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -132,7 +136,14 @@ public class ConfiguracaoFreio implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.autodb.model.dao.ConfiguracaoFreio[ codigoConfiguracaoFreio=" + codigoConfiguracaoFreio + " ]";
+        List<StringBuilderItem> itemList = new ArrayList();
+        
+        itemList.add(new StringBuilderItem(codigoTipoFreioDianteiro, MyStringBuilder.FORMAT_ALONE, "D", null));
+        itemList.add(new StringBuilderItem(codigoTipoFreioTraseiro, MyStringBuilder.FORMAT_SPACE_BEFORE, "T", null));
+        itemList.add(new StringBuilderItem(codigoTipoAssistenciaFreio, MyStringBuilder.FORMAT_SPACE_BEFORE));
+        itemList.add(new StringBuilderItem(codigoFreioABS, MyStringBuilder.FORMAT_SPACE_BEFORE));
+                
+        return MyStringBuilder.format(itemList);
     }
     
 }
