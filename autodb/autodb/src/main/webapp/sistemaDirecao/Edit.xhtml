@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SistemaDirecaoEditDlg" widgetVar="SistemaDirecaoEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditSistemaDirecaoTitle}">
+            <h:form id="SistemaDirecaoEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{sistemaDirecaoController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditSistemaDirecaoLabel_codigoSistemaDirecao}" for="codigoSistemaDirecao" />
+                        <p:inputText id="codigoSistemaDirecao" value="#{sistemaDirecaoController.selected.codigoSistemaDirecao}" title="#{bundle.EditSistemaDirecaoTitle_codigoSistemaDirecao}" required="true" requiredMessage="#{bundle.EditSistemaDirecaoRequiredMessage_codigoSistemaDirecao}"/>
+                        <p:outputLabel value="#{bundle.EditSistemaDirecaoLabel_sistemaDirecao}" for="sistemaDirecao" />
+                        <p:inputText id="sistemaDirecao" value="#{sistemaDirecaoController.selected.sistemaDirecao}" title="#{bundle.EditSistemaDirecaoTitle_sistemaDirecao}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{sistemaDirecaoController.update}" value="#{bundle.Save}" update="display,:SistemaDirecaoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'SistemaDirecaoEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="SistemaDirecaoEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

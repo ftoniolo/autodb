@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ModeloViewDlg" widgetVar="ModeloViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewModeloTitle}">
+            <h:form id="ModeloViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{modeloController.selected != null}">
+                        <h:outputText value="#{bundle.ViewModeloLabel_codigoModelo}"/>
+                        <h:outputText value="#{modeloController.selected.codigoModelo}" title="#{bundle.ViewModeloTitle_codigoModelo}"/>
+                        <h:outputText value="#{bundle.ViewModeloLabel_modelo}"/>
+                        <h:outputText value="#{modeloController.selected.modelo}" title="#{bundle.ViewModeloTitle_modelo}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="ModeloViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

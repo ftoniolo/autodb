@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="LinhaProdutoCreateDlg" widgetVar="LinhaProdutoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateLinhaProdutoTitle}">
+            <h:form id="LinhaProdutoCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{linhaProdutoController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateLinhaProdutoLabel_codigoLinhaProduto}" for="codigoLinhaProduto" />
+                        <p:inputText id="codigoLinhaProduto" value="#{linhaProdutoController.selected.codigoLinhaProduto}" title="#{bundle.CreateLinhaProdutoTitle_codigoLinhaProduto}" required="true" requiredMessage="#{bundle.CreateLinhaProdutoRequiredMessage_codigoLinhaProduto}"/>
+                        <p:outputLabel value="#{bundle.CreateLinhaProdutoLabel_linhaProduto}" for="linhaProduto" />
+                        <p:inputText id="linhaProduto" value="#{linhaProdutoController.selected.linhaProduto}" title="#{bundle.CreateLinhaProdutoTitle_linhaProduto}" required="true" requiredMessage="#{bundle.CreateLinhaProdutoRequiredMessage_linhaProduto}"/>
+                        <p:outputLabel value="#{bundle.CreateLinhaProdutoLabel_ordem}" for="ordem" />
+                        <p:inputText id="ordem" value="#{linhaProdutoController.selected.ordem}" title="#{bundle.CreateLinhaProdutoTitle_ordem}" />
+                        <p:outputLabel value="#{bundle.CreateLinhaProdutoLabel_codigoSubcategoriaProduto}" for="codigoSubcategoriaProduto" />
+                        <p:selectOneMenu id="codigoSubcategoriaProduto" value="#{linhaProdutoController.selected.codigoSubcategoriaProduto}" required="true" requiredMessage="#{bundle.EditLinhaProdutoRequiredMessage_codigoSubcategoriaProduto}">
+                            <f:selectItems value="#{subcategoriaProdutoController.itemsAvailableSelectOne}"
+                                           var="codigoSubcategoriaProdutoItem"
+                                           itemValue="#{codigoSubcategoriaProdutoItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{linhaProdutoController.create}" value="#{bundle.Save}" update="display,:LinhaProdutoListForm:datalist,:growl" oncomplete="handleSubmit(args,'LinhaProdutoCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="LinhaProdutoCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

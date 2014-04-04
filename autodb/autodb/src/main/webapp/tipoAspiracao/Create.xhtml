@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TipoAspiracaoCreateDlg" widgetVar="TipoAspiracaoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateTipoAspiracaoTitle}">
+            <h:form id="TipoAspiracaoCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tipoAspiracaoController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateTipoAspiracaoLabel_codigoTipoAspiracao}" for="codigoTipoAspiracao" />
+                        <p:inputText id="codigoTipoAspiracao" value="#{tipoAspiracaoController.selected.codigoTipoAspiracao}" title="#{bundle.CreateTipoAspiracaoTitle_codigoTipoAspiracao}" required="true" requiredMessage="#{bundle.CreateTipoAspiracaoRequiredMessage_codigoTipoAspiracao}"/>
+                        <p:outputLabel value="#{bundle.CreateTipoAspiracaoLabel_tipoAspiracao}" for="tipoAspiracao" />
+                        <p:inputText id="tipoAspiracao" value="#{tipoAspiracaoController.selected.tipoAspiracao}" title="#{bundle.CreateTipoAspiracaoTitle_tipoAspiracao}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{tipoAspiracaoController.create}" value="#{bundle.Save}" update="display,:TipoAspiracaoListForm:datalist,:growl" oncomplete="handleSubmit(args,'TipoAspiracaoCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TipoAspiracaoCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

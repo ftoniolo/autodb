@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AnexoVeiculoEditDlg" widgetVar="AnexoVeiculoEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditAnexoVeiculoTitle}">
+            <h:form id="AnexoVeiculoEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{anexoVeiculoController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditAnexoVeiculoLabel_codigoAnexoVeiculo}" for="codigoAnexoVeiculo" />
+                        <p:inputText id="codigoAnexoVeiculo" value="#{anexoVeiculoController.selected.codigoAnexoVeiculo}" title="#{bundle.EditAnexoVeiculoTitle_codigoAnexoVeiculo}" required="true" requiredMessage="#{bundle.EditAnexoVeiculoRequiredMessage_codigoAnexoVeiculo}"/>
+                        <p:outputLabel value="#{bundle.EditAnexoVeiculoLabel_caminhoAnexo}" for="caminhoAnexo" />
+                        <p:inputText id="caminhoAnexo" value="#{anexoVeiculoController.selected.caminhoAnexo}" title="#{bundle.EditAnexoVeiculoTitle_caminhoAnexo}" required="true" requiredMessage="#{bundle.EditAnexoVeiculoRequiredMessage_caminhoAnexo}"/>
+                        <p:outputLabel value="#{bundle.EditAnexoVeiculoLabel_observacao}" for="observacao" />
+                        <p:inputText id="observacao" value="#{anexoVeiculoController.selected.observacao}" title="#{bundle.EditAnexoVeiculoTitle_observacao}" />
+                        <p:outputLabel value="#{bundle.EditAnexoVeiculoLabel_codigoVeiculo}" for="codigoVeiculo" />
+                        <p:selectOneMenu id="codigoVeiculo" value="#{anexoVeiculoController.selected.codigoVeiculo}" required="true" requiredMessage="#{bundle.EditAnexoVeiculoRequiredMessage_codigoVeiculo}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{veiculoController.itemsAvailableSelectOne}"
+                                           var="codigoVeiculoItem"
+                                           itemValue="#{codigoVeiculoItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditAnexoVeiculoLabel_codigoTipoAnexo}" for="codigoTipoAnexo" />
+                        <p:selectOneMenu id="codigoTipoAnexo" value="#{anexoVeiculoController.selected.codigoTipoAnexo}" required="true" requiredMessage="#{bundle.EditAnexoVeiculoRequiredMessage_codigoTipoAnexo}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{tipoAnexoController.itemsAvailableSelectOne}"
+                                           var="codigoTipoAnexoItem"
+                                           itemValue="#{codigoTipoAnexoItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{anexoVeiculoController.update}" value="#{bundle.Save}" update="display,:AnexoVeiculoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'AnexoVeiculoEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="AnexoVeiculoEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

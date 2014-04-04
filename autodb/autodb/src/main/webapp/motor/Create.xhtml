@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="MotorCreateDlg" widgetVar="MotorCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateMotorTitle}">
+            <h:form id="MotorCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{motorController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateMotorLabel_codigoMotor}" for="codigoMotor" />
+                        <p:inputText id="codigoMotor" value="#{motorController.selected.codigoMotor}" title="#{bundle.CreateMotorTitle_codigoMotor}" required="true" requiredMessage="#{bundle.CreateMotorRequiredMessage_codigoMotor}"/>
+                        <p:outputLabel value="#{bundle.CreateMotorLabel_motor}" for="motor" />
+                        <p:inputText id="motor" value="#{motorController.selected.motor}" title="#{bundle.CreateMotorTitle_motor}" />
+                        <p:outputLabel value="#{bundle.CreateMotorLabel_potenciaCV}" for="potenciaCV" />
+                        <p:inputText id="potenciaCV" value="#{motorController.selected.potenciaCV}" title="#{bundle.CreateMotorTitle_potenciaCV}" />
+                        <p:outputLabel value="#{bundle.CreateMotorLabel_codigoDesignacao}" for="codigoDesignacao" />
+                        <p:inputText id="codigoDesignacao" value="#{motorController.selected.codigoDesignacao}" title="#{bundle.CreateMotorTitle_codigoDesignacao}" />
+                        <p:outputLabel value="#{bundle.CreateMotorLabel_periodo}" for="periodo" />
+                        <p:inputText id="periodo" value="#{motorController.selected.periodo}" title="#{bundle.CreateMotorTitle_periodo}" />
+                        <p:outputLabel value="#{bundle.CreateMotorLabel_quantidadeCilindros}" for="quantidadeCilindros" />
+                        <p:inputText id="quantidadeCilindros" value="#{motorController.selected.quantidadeCilindros}" title="#{bundle.CreateMotorTitle_quantidadeCilindros}" />
+                        <p:outputLabel value="#{bundle.CreateMotorLabel_disposicaoCilindros}" for="disposicaoCilindros" />
+                        <p:inputText id="disposicaoCilindros" value="#{motorController.selected.disposicaoCilindros}" title="#{bundle.CreateMotorTitle_disposicaoCilindros}" />
+                        <p:outputLabel value="#{bundle.CreateMotorLabel_capacidadeVolumetrica}" for="capacidadeVolumetrica" />
+                        <p:inputText id="capacidadeVolumetrica" value="#{motorController.selected.capacidadeVolumetrica}" title="#{bundle.CreateMotorTitle_capacidadeVolumetrica}" />
+                        <p:outputLabel value="#{bundle.CreateMotorLabel_quantidadeValvulas}" for="quantidadeValvulas" />
+                        <p:inputText id="quantidadeValvulas" value="#{motorController.selected.quantidadeValvulas}" title="#{bundle.CreateMotorTitle_quantidadeValvulas}" />
+                        <p:outputLabel value="#{bundle.CreateMotorLabel_codigoTipoMotor}" for="codigoTipoMotor" />
+                        <p:selectOneMenu id="codigoTipoMotor" value="#{motorController.selected.codigoTipoMotor}" >
+                            <f:selectItems value="#{tipoMotorController.itemsAvailableSelectOne}"
+                                           var="codigoTipoMotorItem"
+                                           itemValue="#{codigoTipoMotorItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateMotorLabel_codigoTipoCombustivel}" for="codigoTipoCombustivel" />
+                        <p:selectOneMenu id="codigoTipoCombustivel" value="#{motorController.selected.codigoTipoCombustivel}" >
+                            <f:selectItems value="#{tipoCombustivelController.itemsAvailableSelectOne}"
+                                           var="codigoTipoCombustivelItem"
+                                           itemValue="#{codigoTipoCombustivelItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateMotorLabel_codigoTipoCabecote}" for="codigoTipoCabecote" />
+                        <p:selectOneMenu id="codigoTipoCabecote" value="#{motorController.selected.codigoTipoCabecote}" >
+                            <f:selectItems value="#{tipoCabecoteController.itemsAvailableSelectOne}"
+                                           var="codigoTipoCabecoteItem"
+                                           itemValue="#{codigoTipoCabecoteItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateMotorLabel_codigoTipoAspiracao}" for="codigoTipoAspiracao" />
+                        <p:selectOneMenu id="codigoTipoAspiracao" value="#{motorController.selected.codigoTipoAspiracao}" >
+                            <f:selectItems value="#{tipoAspiracaoController.itemsAvailableSelectOne}"
+                                           var="codigoTipoAspiracaoItem"
+                                           itemValue="#{codigoTipoAspiracaoItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateMotorLabel_codigoInjecao}" for="codigoInjecao" />
+                        <p:selectOneMenu id="codigoInjecao" value="#{motorController.selected.codigoInjecao}" >
+                            <f:selectItems value="#{injecaoController.itemsAvailableSelectOne}"
+                                           var="codigoInjecaoItem"
+                                           itemValue="#{codigoInjecaoItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{motorController.create}" value="#{bundle.Save}" update="display,:MotorListForm:datalist,:growl" oncomplete="handleSubmit(args,'MotorCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="MotorCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

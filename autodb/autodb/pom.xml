@@ -27,6 +27,11 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
+            <groupId>org.glassfish</groupId>
+            <artifactId>javax.faces</artifactId>
+            <version>2.2.4</version>
+        </dependency>
+        <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
             <version>6.0</version>
@@ -87,6 +92,12 @@
             <name>MySql Maven Repository</name>  
             <url>http://svn.mysql.com/svnpublic/connector-j/trunk/connector-j</url>  
             <layout>default</layout>  
+        </repository>
+        <repository>
+            <url>http://repository.primefaces.org/</url>
+            <id>PrimeFaces-maven-lib</id>
+            <layout>default</layout>
+            <name>Repository for library PrimeFaces-maven-lib</name>
         </repository>
     </repositories>
 

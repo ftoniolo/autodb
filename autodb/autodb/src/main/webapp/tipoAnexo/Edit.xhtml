@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TipoAnexoEditDlg" widgetVar="TipoAnexoEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditTipoAnexoTitle}">
+            <h:form id="TipoAnexoEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tipoAnexoController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditTipoAnexoLabel_codigoTipoAnexo}" for="codigoTipoAnexo" />
+                        <p:inputText id="codigoTipoAnexo" value="#{tipoAnexoController.selected.codigoTipoAnexo}" title="#{bundle.EditTipoAnexoTitle_codigoTipoAnexo}" required="true" requiredMessage="#{bundle.EditTipoAnexoRequiredMessage_codigoTipoAnexo}"/>
+                        <p:outputLabel value="#{bundle.EditTipoAnexoLabel_tipoAnexo}" for="tipoAnexo" />
+                        <p:inputText id="tipoAnexo" value="#{tipoAnexoController.selected.tipoAnexo}" title="#{bundle.EditTipoAnexoTitle_tipoAnexo}" required="true" requiredMessage="#{bundle.EditTipoAnexoRequiredMessage_tipoAnexo}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{tipoAnexoController.update}" value="#{bundle.Save}" update="display,:TipoAnexoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'TipoAnexoEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TipoAnexoEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

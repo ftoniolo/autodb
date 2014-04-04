@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AplicacaoViewDlg" widgetVar="AplicacaoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewAplicacaoTitle}">
+            <h:form id="AplicacaoViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{aplicacaoController.selected != null}">
+                        <h:outputText value="#{bundle.ViewAplicacaoLabel_codigoAplicacao}"/>
+                        <h:outputText value="#{aplicacaoController.selected.codigoAplicacao}" title="#{bundle.ViewAplicacaoTitle_codigoAplicacao}"/>
+                        <h:outputText value="#{bundle.ViewAplicacaoLabel_periodo}"/>
+                        <h:outputText value="#{aplicacaoController.selected.periodo}" title="#{bundle.ViewAplicacaoTitle_periodo}"/>
+                        <h:outputText value="#{bundle.ViewAplicacaoLabel_detalhe}"/>
+                        <h:outputText value="#{aplicacaoController.selected.detalhe}" title="#{bundle.ViewAplicacaoTitle_detalhe}"/>
+                        <h:outputText value="#{bundle.ViewAplicacaoLabel_sistema}"/>
+                        <h:outputText value="#{aplicacaoController.selected.sistema}" title="#{bundle.ViewAplicacaoTitle_sistema}"/>
+                        <h:outputText value="#{bundle.ViewAplicacaoLabel_codigoVeiculo}"/>
+                        <h:outputText value="#{aplicacaoController.selected.codigoVeiculo}" title="#{bundle.ViewAplicacaoTitle_codigoVeiculo}"/>
+                        <h:outputText value="#{bundle.ViewAplicacaoLabel_codigoProduto}"/>
+                        <h:outputText value="#{aplicacaoController.selected.codigoProduto}" title="#{bundle.ViewAplicacaoTitle_codigoProduto}"/>
+                        <h:outputText value="#{bundle.ViewAplicacaoLabel_codigoPosicao}"/>
+                        <h:outputText value="#{aplicacaoController.selected.codigoPosicao}" title="#{bundle.ViewAplicacaoTitle_codigoPosicao}"/>
+                        <h:outputText value="#{bundle.ViewAplicacaoLabel_codigoPais}"/>
+                        <h:outputText value="#{aplicacaoController.selected.codigoPais}" title="#{bundle.ViewAplicacaoTitle_codigoPais}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="AplicacaoViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

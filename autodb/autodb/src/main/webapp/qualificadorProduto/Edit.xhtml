@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="QualificadorProdutoEditDlg" widgetVar="QualificadorProdutoEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditQualificadorProdutoTitle}">
+            <h:form id="QualificadorProdutoEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{qualificadorProdutoController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditQualificadorProdutoLabel_codigoQualificadorProduto}" for="codigoQualificadorProduto" />
+                        <p:inputText id="codigoQualificadorProduto" value="#{qualificadorProdutoController.selected.codigoQualificadorProduto}" title="#{bundle.EditQualificadorProdutoTitle_codigoQualificadorProduto}" required="true" requiredMessage="#{bundle.EditQualificadorProdutoRequiredMessage_codigoQualificadorProduto}"/>
+                        <p:outputLabel value="#{bundle.EditQualificadorProdutoLabel_valor}" for="valor" />
+                        <p:inputText id="valor" value="#{qualificadorProdutoController.selected.valor}" title="#{bundle.EditQualificadorProdutoTitle_valor}" />
+                        <p:outputLabel value="#{bundle.EditQualificadorProdutoLabel_codigoUnidadeMedida}" for="codigoUnidadeMedida" />
+                        <p:selectOneMenu id="codigoUnidadeMedida" value="#{qualificadorProdutoController.selected.codigoUnidadeMedida}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{unidadeMedidaController.itemsAvailableSelectOne}"
+                                           var="codigoUnidadeMedidaItem"
+                                           itemValue="#{codigoUnidadeMedidaItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditQualificadorProdutoLabel_codigoQualificador}" for="codigoQualificador" />
+                        <p:selectOneMenu id="codigoQualificador" value="#{qualificadorProdutoController.selected.codigoQualificador}" required="true" requiredMessage="#{bundle.EditQualificadorProdutoRequiredMessage_codigoQualificador}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{qualificadorController.itemsAvailableSelectOne}"
+                                           var="codigoQualificadorItem"
+                                           itemValue="#{codigoQualificadorItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditQualificadorProdutoLabel_codigoProduto}" for="codigoProduto" />
+                        <p:selectOneMenu id="codigoProduto" value="#{qualificadorProdutoController.selected.codigoProduto}" required="true" requiredMessage="#{bundle.EditQualificadorProdutoRequiredMessage_codigoProduto}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{produtoController.itemsAvailableSelectOne}"
+                                           var="codigoProdutoItem"
+                                           itemValue="#{codigoProdutoItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{qualificadorProdutoController.update}" value="#{bundle.Save}" update="display,:QualificadorProdutoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'QualificadorProdutoEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="QualificadorProdutoEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

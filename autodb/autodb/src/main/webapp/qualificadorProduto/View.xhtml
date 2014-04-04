@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="QualificadorProdutoViewDlg" widgetVar="QualificadorProdutoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewQualificadorProdutoTitle}">
+            <h:form id="QualificadorProdutoViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{qualificadorProdutoController.selected != null}">
+                        <h:outputText value="#{bundle.ViewQualificadorProdutoLabel_codigoQualificadorProduto}"/>
+                        <h:outputText value="#{qualificadorProdutoController.selected.codigoQualificadorProduto}" title="#{bundle.ViewQualificadorProdutoTitle_codigoQualificadorProduto}"/>
+                        <h:outputText value="#{bundle.ViewQualificadorProdutoLabel_valor}"/>
+                        <h:outputText value="#{qualificadorProdutoController.selected.valor}" title="#{bundle.ViewQualificadorProdutoTitle_valor}"/>
+                        <h:outputText value="#{bundle.ViewQualificadorProdutoLabel_codigoUnidadeMedida}"/>
+                        <h:outputText value="#{qualificadorProdutoController.selected.codigoUnidadeMedida}" title="#{bundle.ViewQualificadorProdutoTitle_codigoUnidadeMedida}"/>
+                        <h:outputText value="#{bundle.ViewQualificadorProdutoLabel_codigoQualificador}"/>
+                        <h:outputText value="#{qualificadorProdutoController.selected.codigoQualificador}" title="#{bundle.ViewQualificadorProdutoTitle_codigoQualificador}"/>
+                        <h:outputText value="#{bundle.ViewQualificadorProdutoLabel_codigoProduto}"/>
+                        <h:outputText value="#{qualificadorProdutoController.selected.codigoProduto}" title="#{bundle.ViewQualificadorProdutoTitle_codigoProduto}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="QualificadorProdutoViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

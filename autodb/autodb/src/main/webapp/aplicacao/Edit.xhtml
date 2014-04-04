@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AplicacaoEditDlg" widgetVar="AplicacaoEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditAplicacaoTitle}">
+            <h:form id="AplicacaoEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{aplicacaoController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditAplicacaoLabel_codigoAplicacao}" for="codigoAplicacao" />
+                        <p:inputText id="codigoAplicacao" value="#{aplicacaoController.selected.codigoAplicacao}" title="#{bundle.EditAplicacaoTitle_codigoAplicacao}" required="true" requiredMessage="#{bundle.EditAplicacaoRequiredMessage_codigoAplicacao}"/>
+                        <p:outputLabel value="#{bundle.EditAplicacaoLabel_periodo}" for="periodo" />
+                        <p:inputText id="periodo" value="#{aplicacaoController.selected.periodo}" title="#{bundle.EditAplicacaoTitle_periodo}" />
+                        <p:outputLabel value="#{bundle.EditAplicacaoLabel_detalhe}" for="detalhe" />
+                        <p:inputText id="detalhe" value="#{aplicacaoController.selected.detalhe}" title="#{bundle.EditAplicacaoTitle_detalhe}" />
+                        <p:outputLabel value="#{bundle.EditAplicacaoLabel_sistema}" for="sistema" />
+                        <p:inputText id="sistema" value="#{aplicacaoController.selected.sistema}" title="#{bundle.EditAplicacaoTitle_sistema}" />
+                        <p:outputLabel value="#{bundle.EditAplicacaoLabel_codigoVeiculo}" for="codigoVeiculo" />
+                        <p:selectOneMenu id="codigoVeiculo" value="#{aplicacaoController.selected.codigoVeiculo}" required="true" requiredMessage="#{bundle.EditAplicacaoRequiredMessage_codigoVeiculo}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{veiculoController.itemsAvailableSelectOne}"
+                                           var="codigoVeiculoItem"
+                                           itemValue="#{codigoVeiculoItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditAplicacaoLabel_codigoProduto}" for="codigoProduto" />
+                        <p:selectOneMenu id="codigoProduto" value="#{aplicacaoController.selected.codigoProduto}" required="true" requiredMessage="#{bundle.EditAplicacaoRequiredMessage_codigoProduto}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{produtoController.itemsAvailableSelectOne}"
+                                           var="codigoProdutoItem"
+                                           itemValue="#{codigoProdutoItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditAplicacaoLabel_codigoPosicao}" for="codigoPosicao" />
+                        <p:selectOneMenu id="codigoPosicao" value="#{aplicacaoController.selected.codigoPosicao}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{posicaoController.itemsAvailableSelectOne}"
+                                           var="codigoPosicaoItem"
+                                           itemValue="#{codigoPosicaoItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditAplicacaoLabel_codigoPais}" for="codigoPais" />
+                        <p:selectOneMenu id="codigoPais" value="#{aplicacaoController.selected.codigoPais}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{paisController.itemsAvailableSelectOne}"
+                                           var="codigoPaisItem"
+                                           itemValue="#{codigoPaisItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{aplicacaoController.update}" value="#{bundle.Save}" update="display,:AplicacaoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'AplicacaoEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="AplicacaoEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

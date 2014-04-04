@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TipoTransmissaoCreateDlg" widgetVar="TipoTransmissaoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateTipoTransmissaoTitle}">
+            <h:form id="TipoTransmissaoCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tipoTransmissaoController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateTipoTransmissaoLabel_codigoTipoTransmissao}" for="codigoTipoTransmissao" />
+                        <p:inputText id="codigoTipoTransmissao" value="#{tipoTransmissaoController.selected.codigoTipoTransmissao}" title="#{bundle.CreateTipoTransmissaoTitle_codigoTipoTransmissao}" required="true" requiredMessage="#{bundle.CreateTipoTransmissaoRequiredMessage_codigoTipoTransmissao}"/>
+                        <p:outputLabel value="#{bundle.CreateTipoTransmissaoLabel_tipoTransmissao}" for="tipoTransmissao" />
+                        <p:inputText id="tipoTransmissao" value="#{tipoTransmissaoController.selected.tipoTransmissao}" title="#{bundle.CreateTipoTransmissaoTitle_tipoTransmissao}" />
+                        <p:outputLabel value="#{bundle.CreateTipoTransmissaoLabel_nome}" for="nome" />
+                        <p:inputText id="nome" value="#{tipoTransmissaoController.selected.nome}" title="#{bundle.CreateTipoTransmissaoTitle_nome}" />
+                        <p:outputLabel value="#{bundle.CreateTipoTransmissaoLabel_velocidades}" for="velocidades" />
+                        <p:inputText id="velocidades" value="#{tipoTransmissaoController.selected.velocidades}" title="#{bundle.CreateTipoTransmissaoTitle_velocidades}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{tipoTransmissaoController.create}" value="#{bundle.Save}" update="display,:TipoTransmissaoListForm:datalist,:growl" oncomplete="handleSubmit(args,'TipoTransmissaoCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TipoTransmissaoCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

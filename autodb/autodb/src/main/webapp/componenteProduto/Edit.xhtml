@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ComponenteProdutoEditDlg" widgetVar="ComponenteProdutoEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditComponenteProdutoTitle}">
+            <h:form id="ComponenteProdutoEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{componenteProdutoController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditComponenteProdutoLabel_codigoProdutoProduto}" for="codigoProdutoProduto" />
+                        <p:inputText id="codigoProdutoProduto" value="#{componenteProdutoController.selected.codigoProdutoProduto}" title="#{bundle.EditComponenteProdutoTitle_codigoProdutoProduto}" required="true" requiredMessage="#{bundle.EditComponenteProdutoRequiredMessage_codigoProdutoProduto}"/>
+                        <p:outputLabel value="#{bundle.EditComponenteProdutoLabel_ordem}" for="ordem" />
+                        <p:inputText id="ordem" value="#{componenteProdutoController.selected.ordem}" title="#{bundle.EditComponenteProdutoTitle_ordem}" />
+                        <p:outputLabel value="#{bundle.EditComponenteProdutoLabel_codigoProdutoFilho}" for="codigoProdutoFilho" />
+                        <p:selectOneMenu id="codigoProdutoFilho" value="#{componenteProdutoController.selected.codigoProdutoFilho}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{produtoController.itemsAvailableSelectOne}"
+                                           var="codigoProdutoFilhoItem"
+                                           itemValue="#{codigoProdutoFilhoItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditComponenteProdutoLabel_codigoProdutoPai}" for="codigoProdutoPai" />
+                        <p:selectOneMenu id="codigoProdutoPai" value="#{componenteProdutoController.selected.codigoProdutoPai}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{produtoController.itemsAvailableSelectOne}"
+                                           var="codigoProdutoPaiItem"
+                                           itemValue="#{codigoProdutoPaiItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{componenteProdutoController.update}" value="#{bundle.Save}" update="display,:ComponenteProdutoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ComponenteProdutoEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ComponenteProdutoEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

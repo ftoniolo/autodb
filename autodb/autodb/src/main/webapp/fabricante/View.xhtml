@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="FabricanteViewDlg" widgetVar="FabricanteViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewFabricanteTitle}">
+            <h:form id="FabricanteViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{fabricanteController.selected != null}">
+                        <h:outputText value="#{bundle.ViewFabricanteLabel_codigoFabricante}"/>
+                        <h:outputText value="#{fabricanteController.selected.codigoFabricante}" title="#{bundle.ViewFabricanteTitle_codigoFabricante}"/>
+                        <h:outputText value="#{bundle.ViewFabricanteLabel_fabricante}"/>
+                        <h:outputText value="#{fabricanteController.selected.fabricante}" title="#{bundle.ViewFabricanteTitle_fabricante}"/>
+                        <h:outputText value="#{bundle.ViewFabricanteLabel_nomeAbreviado}"/>
+                        <h:outputText value="#{fabricanteController.selected.nomeAbreviado}" title="#{bundle.ViewFabricanteTitle_nomeAbreviado}"/>
+                        <h:outputText value="#{bundle.ViewFabricanteLabel_cidade}"/>
+                        <h:outputText value="#{fabricanteController.selected.cidade}" title="#{bundle.ViewFabricanteTitle_cidade}"/>
+                        <h:outputText value="#{bundle.ViewFabricanteLabel_telefone}"/>
+                        <h:outputText value="#{fabricanteController.selected.telefone}" title="#{bundle.ViewFabricanteTitle_telefone}"/>
+                        <h:outputText value="#{bundle.ViewFabricanteLabel_email}"/>
+                        <h:outputText value="#{fabricanteController.selected.email}" title="#{bundle.ViewFabricanteTitle_email}"/>
+                        <h:outputText value="#{bundle.ViewFabricanteLabel_website}"/>
+                        <h:outputText value="#{fabricanteController.selected.website}" title="#{bundle.ViewFabricanteTitle_website}"/>
+                        <h:outputText value="#{bundle.ViewFabricanteLabel_observacao}"/>
+                        <h:outputText value="#{fabricanteController.selected.observacao}" title="#{bundle.ViewFabricanteTitle_observacao}"/>
+                        <h:outputText value="#{bundle.ViewFabricanteLabel_oem}"/>
+                        <p:selectBooleanCheckbox value="#{fabricanteController.selected.oem}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewFabricanteLabel_codigoPais}"/>
+                        <h:outputText value="#{fabricanteController.selected.codigoPais}" title="#{bundle.ViewFabricanteTitle_codigoPais}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="FabricanteViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

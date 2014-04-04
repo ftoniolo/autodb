@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PosicaoCreateDlg" widgetVar="PosicaoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreatePosicaoTitle}">
+            <h:form id="PosicaoCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{posicaoController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreatePosicaoLabel_codigoPosicao}" for="codigoPosicao" />
+                        <p:inputText id="codigoPosicao" value="#{posicaoController.selected.codigoPosicao}" title="#{bundle.CreatePosicaoTitle_codigoPosicao}" required="true" requiredMessage="#{bundle.CreatePosicaoRequiredMessage_codigoPosicao}"/>
+                        <p:outputLabel value="#{bundle.CreatePosicaoLabel_posicao}" for="posicao" />
+                        <p:inputText id="posicao" value="#{posicaoController.selected.posicao}" title="#{bundle.CreatePosicaoTitle_posicao}" />
+                        <p:outputLabel value="#{bundle.CreatePosicaoLabel_abreviatura}" for="abreviatura" />
+                        <p:inputText id="abreviatura" value="#{posicaoController.selected.abreviatura}" title="#{bundle.CreatePosicaoTitle_abreviatura}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{posicaoController.create}" value="#{bundle.Save}" update="display,:PosicaoListForm:datalist,:growl" oncomplete="handleSubmit(args,'PosicaoCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="PosicaoCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="QualificadorEditDlg" widgetVar="QualificadorEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditQualificadorTitle}">
+            <h:form id="QualificadorEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{qualificadorController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditQualificadorLabel_codigoQualificador}" for="codigoQualificador" />
+                        <p:inputText id="codigoQualificador" value="#{qualificadorController.selected.codigoQualificador}" title="#{bundle.EditQualificadorTitle_codigoQualificador}" required="true" requiredMessage="#{bundle.EditQualificadorRequiredMessage_codigoQualificador}"/>
+                        <p:outputLabel value="#{bundle.EditQualificadorLabel_qualificador}" for="qualificador" />
+                        <p:inputText id="qualificador" value="#{qualificadorController.selected.qualificador}" title="#{bundle.EditQualificadorTitle_qualificador}" required="true" requiredMessage="#{bundle.EditQualificadorRequiredMessage_qualificador}"/>
+                        <p:outputLabel value="#{bundle.EditQualificadorLabel_exemplo}" for="exemplo" />
+                        <p:inputText id="exemplo" value="#{qualificadorController.selected.exemplo}" title="#{bundle.EditQualificadorTitle_exemplo}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{qualificadorController.update}" value="#{bundle.Save}" update="display,:QualificadorListForm:datalist,:growl" oncomplete="handleSubmit(args, 'QualificadorEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="QualificadorEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

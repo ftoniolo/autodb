@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="VeiculoBaseCreateDlg" widgetVar="VeiculoBaseCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateVeiculoBaseTitle}">
+            <h:form id="VeiculoBaseCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{veiculoBaseController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateVeiculoBaseLabel_codigoVeiculoBase}" for="codigoVeiculoBase" />
+                        <p:inputText id="codigoVeiculoBase" value="#{veiculoBaseController.selected.codigoVeiculoBase}" title="#{bundle.CreateVeiculoBaseTitle_codigoVeiculoBase}" required="true" requiredMessage="#{bundle.CreateVeiculoBaseRequiredMessage_codigoVeiculoBase}"/>
+                        <p:outputLabel value="#{bundle.CreateVeiculoBaseLabel_geracao}" for="geracao" />
+                        <p:inputText id="geracao" value="#{veiculoBaseController.selected.geracao}" title="#{bundle.CreateVeiculoBaseTitle_geracao}" />
+                        <p:outputLabel value="#{bundle.CreateVeiculoBaseLabel_serie}" for="serie" />
+                        <p:inputText id="serie" value="#{veiculoBaseController.selected.serie}" title="#{bundle.CreateVeiculoBaseTitle_serie}" />
+                        <p:outputLabel value="#{bundle.CreateVeiculoBaseLabel_periodoFabricacao}" for="periodoFabricacao" />
+                        <p:inputText id="periodoFabricacao" value="#{veiculoBaseController.selected.periodoFabricacao}" title="#{bundle.CreateVeiculoBaseTitle_periodoFabricacao}" required="true" requiredMessage="#{bundle.CreateVeiculoBaseRequiredMessage_periodoFabricacao}"/>
+                        <p:outputLabel value="#{bundle.CreateVeiculoBaseLabel_codigoTipoVeiculo}" for="codigoTipoVeiculo" />
+                        <p:selectOneMenu id="codigoTipoVeiculo" value="#{veiculoBaseController.selected.codigoTipoVeiculo}" required="true" requiredMessage="#{bundle.EditVeiculoBaseRequiredMessage_codigoTipoVeiculo}">
+                            <f:selectItems value="#{tipoVeiculoController.itemsAvailableSelectOne}"
+                                           var="codigoTipoVeiculoItem"
+                                           itemValue="#{codigoTipoVeiculoItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateVeiculoBaseLabel_codigoTipoCarrocaria}" for="codigoTipoCarrocaria" />
+                        <p:selectOneMenu id="codigoTipoCarrocaria" value="#{veiculoBaseController.selected.codigoTipoCarrocaria}" required="true" requiredMessage="#{bundle.EditVeiculoBaseRequiredMessage_codigoTipoCarrocaria}">
+                            <f:selectItems value="#{tipoCarrocariaController.itemsAvailableSelectOne}"
+                                           var="codigoTipoCarrocariaItem"
+                                           itemValue="#{codigoTipoCarrocariaItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateVeiculoBaseLabel_codigoModelo}" for="codigoModelo" />
+                        <p:selectOneMenu id="codigoModelo" value="#{veiculoBaseController.selected.codigoModelo}" required="true" requiredMessage="#{bundle.EditVeiculoBaseRequiredMessage_codigoModelo}">
+                            <f:selectItems value="#{modeloController.itemsAvailableSelectOne}"
+                                           var="codigoModeloItem"
+                                           itemValue="#{codigoModeloItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateVeiculoBaseLabel_codigoMarca}" for="codigoMarca" />
+                        <p:selectOneMenu id="codigoMarca" value="#{veiculoBaseController.selected.codigoMarca}" required="true" requiredMessage="#{bundle.EditVeiculoBaseRequiredMessage_codigoMarca}">
+                            <f:selectItems value="#{marcaController.itemsAvailableSelectOne}"
+                                           var="codigoMarcaItem"
+                                           itemValue="#{codigoMarcaItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{veiculoBaseController.create}" value="#{bundle.Save}" update="display,:VeiculoBaseListForm:datalist,:growl" oncomplete="handleSubmit(args,'VeiculoBaseCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="VeiculoBaseCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

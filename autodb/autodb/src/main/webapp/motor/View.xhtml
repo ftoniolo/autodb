@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="MotorViewDlg" widgetVar="MotorViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewMotorTitle}">
+            <h:form id="MotorViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{motorController.selected != null}">
+                        <h:outputText value="#{bundle.ViewMotorLabel_codigoMotor}"/>
+                        <h:outputText value="#{motorController.selected.codigoMotor}" title="#{bundle.ViewMotorTitle_codigoMotor}"/>
+                        <h:outputText value="#{bundle.ViewMotorLabel_motor}"/>
+                        <h:outputText value="#{motorController.selected.motor}" title="#{bundle.ViewMotorTitle_motor}"/>
+                        <h:outputText value="#{bundle.ViewMotorLabel_potenciaCV}"/>
+                        <h:outputText value="#{motorController.selected.potenciaCV}" title="#{bundle.ViewMotorTitle_potenciaCV}"/>
+                        <h:outputText value="#{bundle.ViewMotorLabel_codigoDesignacao}"/>
+                        <h:outputText value="#{motorController.selected.codigoDesignacao}" title="#{bundle.ViewMotorTitle_codigoDesignacao}"/>
+                        <h:outputText value="#{bundle.ViewMotorLabel_periodo}"/>
+                        <h:outputText value="#{motorController.selected.periodo}" title="#{bundle.ViewMotorTitle_periodo}"/>
+                        <h:outputText value="#{bundle.ViewMotorLabel_quantidadeCilindros}"/>
+                        <h:outputText value="#{motorController.selected.quantidadeCilindros}" title="#{bundle.ViewMotorTitle_quantidadeCilindros}"/>
+                        <h:outputText value="#{bundle.ViewMotorLabel_disposicaoCilindros}"/>
+                        <h:outputText value="#{motorController.selected.disposicaoCilindros}" title="#{bundle.ViewMotorTitle_disposicaoCilindros}"/>
+                        <h:outputText value="#{bundle.ViewMotorLabel_capacidadeVolumetrica}"/>
+                        <h:outputText value="#{motorController.selected.capacidadeVolumetrica}" title="#{bundle.ViewMotorTitle_capacidadeVolumetrica}"/>
+                        <h:outputText value="#{bundle.ViewMotorLabel_quantidadeValvulas}"/>
+                        <h:outputText value="#{motorController.selected.quantidadeValvulas}" title="#{bundle.ViewMotorTitle_quantidadeValvulas}"/>
+                        <h:outputText value="#{bundle.ViewMotorLabel_codigoTipoMotor}"/>
+                        <h:outputText value="#{motorController.selected.codigoTipoMotor}" title="#{bundle.ViewMotorTitle_codigoTipoMotor}"/>
+                        <h:outputText value="#{bundle.ViewMotorLabel_codigoTipoCombustivel}"/>
+                        <h:outputText value="#{motorController.selected.codigoTipoCombustivel}" title="#{bundle.ViewMotorTitle_codigoTipoCombustivel}"/>
+                        <h:outputText value="#{bundle.ViewMotorLabel_codigoTipoCabecote}"/>
+                        <h:outputText value="#{motorController.selected.codigoTipoCabecote}" title="#{bundle.ViewMotorTitle_codigoTipoCabecote}"/>
+                        <h:outputText value="#{bundle.ViewMotorLabel_codigoTipoAspiracao}"/>
+                        <h:outputText value="#{motorController.selected.codigoTipoAspiracao}" title="#{bundle.ViewMotorTitle_codigoTipoAspiracao}"/>
+                        <h:outputText value="#{bundle.ViewMotorLabel_codigoInjecao}"/>
+                        <h:outputText value="#{motorController.selected.codigoInjecao}" title="#{bundle.ViewMotorTitle_codigoInjecao}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="MotorViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

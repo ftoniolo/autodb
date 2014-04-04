@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="VeiculoBaseRelacionadoEditDlg" widgetVar="VeiculoBaseRelacionadoEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditVeiculoBaseRelacionadoTitle}">
+            <h:form id="VeiculoBaseRelacionadoEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{veiculoBaseRelacionadoController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditVeiculoBaseRelacionadoLabel_codigoVeiculoBaseRelacionado}" for="codigoVeiculoBaseRelacionado" />
+                        <p:inputText id="codigoVeiculoBaseRelacionado" value="#{veiculoBaseRelacionadoController.selected.codigoVeiculoBaseRelacionado}" title="#{bundle.EditVeiculoBaseRelacionadoTitle_codigoVeiculoBaseRelacionado}" required="true" requiredMessage="#{bundle.EditVeiculoBaseRelacionadoRequiredMessage_codigoVeiculoBaseRelacionado}"/>
+                        <p:outputLabel value="#{bundle.EditVeiculoBaseRelacionadoLabel_codigoVeiculoBaseB}" for="codigoVeiculoBaseB" />
+                        <p:selectOneMenu id="codigoVeiculoBaseB" value="#{veiculoBaseRelacionadoController.selected.codigoVeiculoBaseB}" required="true" requiredMessage="#{bundle.EditVeiculoBaseRelacionadoRequiredMessage_codigoVeiculoBaseB}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{veiculoBaseController.itemsAvailableSelectOne}"
+                                           var="codigoVeiculoBaseBItem"
+                                           itemValue="#{codigoVeiculoBaseBItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditVeiculoBaseRelacionadoLabel_codigoVeiculoBaseA}" for="codigoVeiculoBaseA" />
+                        <p:selectOneMenu id="codigoVeiculoBaseA" value="#{veiculoBaseRelacionadoController.selected.codigoVeiculoBaseA}" required="true" requiredMessage="#{bundle.EditVeiculoBaseRelacionadoRequiredMessage_codigoVeiculoBaseA}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{veiculoBaseController.itemsAvailableSelectOne}"
+                                           var="codigoVeiculoBaseAItem"
+                                           itemValue="#{codigoVeiculoBaseAItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{veiculoBaseRelacionadoController.update}" value="#{bundle.Save}" update="display,:VeiculoBaseRelacionadoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'VeiculoBaseRelacionadoEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="VeiculoBaseRelacionadoEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

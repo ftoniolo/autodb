@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TipoMotorCreateDlg" widgetVar="TipoMotorCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateTipoMotorTitle}">
+            <h:form id="TipoMotorCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tipoMotorController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateTipoMotorLabel_codigoTipoMotor}" for="codigoTipoMotor" />
+                        <p:inputText id="codigoTipoMotor" value="#{tipoMotorController.selected.codigoTipoMotor}" title="#{bundle.CreateTipoMotorTitle_codigoTipoMotor}" required="true" requiredMessage="#{bundle.CreateTipoMotorRequiredMessage_codigoTipoMotor}"/>
+                        <p:outputLabel value="#{bundle.CreateTipoMotorLabel_tipoMotor}" for="tipoMotor" />
+                        <p:inputText id="tipoMotor" value="#{tipoMotorController.selected.tipoMotor}" title="#{bundle.CreateTipoMotorTitle_tipoMotor}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{tipoMotorController.create}" value="#{bundle.Save}" update="display,:TipoMotorListForm:datalist,:growl" oncomplete="handleSubmit(args,'TipoMotorCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TipoMotorCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

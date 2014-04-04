@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ProdutoViewDlg" widgetVar="ProdutoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewProdutoTitle}">
+            <h:form id="ProdutoViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{produtoController.selected != null}">
+                        <h:outputText value="#{bundle.ViewProdutoLabel_codigoProduto}"/>
+                        <h:outputText value="#{produtoController.selected.codigoProduto}" title="#{bundle.ViewProdutoTitle_codigoProduto}"/>
+                        <h:outputText value="#{bundle.ViewProdutoLabel_referencia}"/>
+                        <h:outputText value="#{produtoController.selected.referencia}" title="#{bundle.ViewProdutoTitle_referencia}"/>
+                        <h:outputText value="#{bundle.ViewProdutoLabel_dataLancamento}"/>
+                        <h:outputText value="#{produtoController.selected.dataLancamento}" title="#{bundle.ViewProdutoTitle_dataLancamento}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewProdutoLabel_dataCadastramento}"/>
+                        <h:outputText value="#{produtoController.selected.dataCadastramento}" title="#{bundle.ViewProdutoTitle_dataCadastramento}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewProdutoLabel_eixo}"/>
+                        <h:outputText value="#{produtoController.selected.eixo}" title="#{bundle.ViewProdutoTitle_eixo}"/>
+                        <h:outputText value="#{bundle.ViewProdutoLabel_lado}"/>
+                        <h:outputText value="#{produtoController.selected.lado}" title="#{bundle.ViewProdutoTitle_lado}"/>
+                        <h:outputText value="#{bundle.ViewProdutoLabel_codigoStatusProduto}"/>
+                        <h:outputText value="#{produtoController.selected.codigoStatusProduto}" title="#{bundle.ViewProdutoTitle_codigoStatusProduto}"/>
+                        <h:outputText value="#{bundle.ViewProdutoLabel_codigoLinhaProduto}"/>
+                        <h:outputText value="#{produtoController.selected.codigoLinhaProduto}" title="#{bundle.ViewProdutoTitle_codigoLinhaProduto}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="ProdutoViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

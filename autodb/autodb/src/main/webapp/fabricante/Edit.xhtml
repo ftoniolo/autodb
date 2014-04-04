@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="FabricanteEditDlg" widgetVar="FabricanteEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditFabricanteTitle}">
+            <h:form id="FabricanteEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{fabricanteController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditFabricanteLabel_codigoFabricante}" for="codigoFabricante" />
+                        <p:inputText id="codigoFabricante" value="#{fabricanteController.selected.codigoFabricante}" title="#{bundle.EditFabricanteTitle_codigoFabricante}" required="true" requiredMessage="#{bundle.EditFabricanteRequiredMessage_codigoFabricante}"/>
+                        <p:outputLabel value="#{bundle.EditFabricanteLabel_fabricante}" for="fabricante" />
+                        <p:inputText id="fabricante" value="#{fabricanteController.selected.fabricante}" title="#{bundle.EditFabricanteTitle_fabricante}" />
+                        <p:outputLabel value="#{bundle.EditFabricanteLabel_nomeAbreviado}" for="nomeAbreviado" />
+                        <p:inputText id="nomeAbreviado" value="#{fabricanteController.selected.nomeAbreviado}" title="#{bundle.EditFabricanteTitle_nomeAbreviado}" />
+                        <p:outputLabel value="#{bundle.EditFabricanteLabel_cidade}" for="cidade" />
+                        <p:inputText id="cidade" value="#{fabricanteController.selected.cidade}" title="#{bundle.EditFabricanteTitle_cidade}" />
+                        <p:outputLabel value="#{bundle.EditFabricanteLabel_telefone}" for="telefone" />
+                        <p:inputText id="telefone" value="#{fabricanteController.selected.telefone}" title="#{bundle.EditFabricanteTitle_telefone}" />
+                        <p:outputLabel value="#{bundle.EditFabricanteLabel_email}" for="email" />
+                        <p:inputText id="email" value="#{fabricanteController.selected.email}" title="#{bundle.EditFabricanteTitle_email}" />
+                        <p:outputLabel value="#{bundle.EditFabricanteLabel_website}" for="website" />
+                        <p:inputText id="website" value="#{fabricanteController.selected.website}" title="#{bundle.EditFabricanteTitle_website}" />
+                        <p:outputLabel value="#{bundle.EditFabricanteLabel_observacao}" for="observacao" />
+                        <p:inputText id="observacao" value="#{fabricanteController.selected.observacao}" title="#{bundle.EditFabricanteTitle_observacao}" />
+                        <p:outputLabel value="#{bundle.EditFabricanteLabel_oem}" for="oem" />
+                        <p:selectBooleanCheckbox id="oem" value="#{fabricanteController.selected.oem}" required="true" requiredMessage="#{bundle.EditFabricanteRequiredMessage_oem}"/>
+                        <p:outputLabel value="#{bundle.EditFabricanteLabel_codigoPais}" for="codigoPais" />
+                        <p:selectOneMenu id="codigoPais" value="#{fabricanteController.selected.codigoPais}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{paisController.itemsAvailableSelectOne}"
+                                           var="codigoPaisItem"
+                                           itemValue="#{codigoPaisItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{fabricanteController.update}" value="#{bundle.Save}" update="display,:FabricanteListForm:datalist,:growl" oncomplete="handleSubmit(args, 'FabricanteEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="FabricanteEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

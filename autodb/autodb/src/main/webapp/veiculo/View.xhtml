@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="VeiculoViewDlg" widgetVar="VeiculoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewVeiculoTitle}">
+            <h:form id="VeiculoViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{veiculoController.selected != null}">
+                        <h:outputText value="#{bundle.ViewVeiculoLabel_codigoVeiculo}"/>
+                        <h:outputText value="#{veiculoController.selected.codigoVeiculo}" title="#{bundle.ViewVeiculoTitle_codigoVeiculo}"/>
+                        <h:outputText value="#{bundle.ViewVeiculoLabel_periodoFabricacao}"/>
+                        <h:outputText value="#{veiculoController.selected.periodoFabricacao}" title="#{bundle.ViewVeiculoTitle_periodoFabricacao}"/>
+                        <h:outputText value="#{bundle.ViewVeiculoLabel_codigoVeiculoBase}"/>
+                        <h:outputText value="#{veiculoController.selected.codigoVeiculoBase}" title="#{bundle.ViewVeiculoTitle_codigoVeiculoBase}"/>
+                        <h:outputText value="#{bundle.ViewVeiculoLabel_codigoTipoTransmissao}"/>
+                        <h:outputText value="#{veiculoController.selected.codigoTipoTransmissao}" title="#{bundle.ViewVeiculoTitle_codigoTipoTransmissao}"/>
+                        <h:outputText value="#{bundle.ViewVeiculoLabel_codigoTipoTracao}"/>
+                        <h:outputText value="#{veiculoController.selected.codigoTipoTracao}" title="#{bundle.ViewVeiculoTitle_codigoTipoTracao}"/>
+                        <h:outputText value="#{bundle.ViewVeiculoLabel_codigoSubmodelo}"/>
+                        <h:outputText value="#{veiculoController.selected.codigoSubmodelo}" title="#{bundle.ViewVeiculoTitle_codigoSubmodelo}"/>
+                        <h:outputText value="#{bundle.ViewVeiculoLabel_codigoSistemaDirecao}"/>
+                        <h:outputText value="#{veiculoController.selected.codigoSistemaDirecao}" title="#{bundle.ViewVeiculoTitle_codigoSistemaDirecao}"/>
+                        <h:outputText value="#{bundle.ViewVeiculoLabel_codigoPaisFabricacao}"/>
+                        <h:outputText value="#{veiculoController.selected.codigoPaisFabricacao}" title="#{bundle.ViewVeiculoTitle_codigoPaisFabricacao}"/>
+                        <h:outputText value="#{bundle.ViewVeiculoLabel_codigoMotor}"/>
+                        <h:outputText value="#{veiculoController.selected.codigoMotor}" title="#{bundle.ViewVeiculoTitle_codigoMotor}"/>
+                        <h:outputText value="#{bundle.ViewVeiculoLabel_codigoConfiguracaoFreio}"/>
+                        <h:outputText value="#{veiculoController.selected.codigoConfiguracaoFreio}" title="#{bundle.ViewVeiculoTitle_codigoConfiguracaoFreio}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="VeiculoViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

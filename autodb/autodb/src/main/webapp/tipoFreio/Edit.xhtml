@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TipoFreioEditDlg" widgetVar="TipoFreioEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditTipoFreioTitle}">
+            <h:form id="TipoFreioEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tipoFreioController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditTipoFreioLabel_codigoTipoFreio}" for="codigoTipoFreio" />
+                        <p:inputText id="codigoTipoFreio" value="#{tipoFreioController.selected.codigoTipoFreio}" title="#{bundle.EditTipoFreioTitle_codigoTipoFreio}" required="true" requiredMessage="#{bundle.EditTipoFreioRequiredMessage_codigoTipoFreio}"/>
+                        <p:outputLabel value="#{bundle.EditTipoFreioLabel_tipoFreio}" for="tipoFreio" />
+                        <p:inputText id="tipoFreio" value="#{tipoFreioController.selected.tipoFreio}" title="#{bundle.EditTipoFreioTitle_tipoFreio}" />
+                        <p:outputLabel value="#{bundle.EditTipoFreioLabel_abreviatura}" for="abreviatura" />
+                        <p:inputText id="abreviatura" value="#{tipoFreioController.selected.abreviatura}" title="#{bundle.EditTipoFreioTitle_abreviatura}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{tipoFreioController.update}" value="#{bundle.Save}" update="display,:TipoFreioListForm:datalist,:growl" oncomplete="handleSubmit(args, 'TipoFreioEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TipoFreioEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListMotorTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="MotorListForm">
+                <p:panel header="#{bundle.ListMotorTitle}">
+                    <p:dataTable id="datalist" value="#{motorController.items}" var="item"
+                                 selectionMode="single" selection="#{motorController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.codigoMotor}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMotorTitle_codigoMotor}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoMotor}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMotorTitle_motor}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.motor}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMotorTitle_potenciaCV}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.potenciaCV}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMotorTitle_codigoDesignacao}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoDesignacao}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMotorTitle_periodo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.periodo}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMotorTitle_quantidadeCilindros}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.quantidadeCilindros}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMotorTitle_disposicaoCilindros}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.disposicaoCilindros}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMotorTitle_capacidadeVolumetrica}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.capacidadeVolumetrica}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMotorTitle_quantidadeValvulas}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.quantidadeValvulas}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMotorTitle_codigoTipoMotor}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoTipoMotor}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMotorTitle_codigoTipoCombustivel}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoTipoCombustivel}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMotorTitle_codigoTipoCabecote}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoTipoCabecote}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMotorTitle_codigoTipoAspiracao}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoTipoAspiracao}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMotorTitle_codigoInjecao}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoInjecao}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{motorController.prepareCreate}" update=":MotorCreateForm" oncomplete="PF('MotorCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":MotorViewForm" oncomplete="PF('MotorViewDialog').show()" disabled="#{empty motorController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":MotorEditForm" oncomplete="PF('MotorEditDialog').show()" disabled="#{empty motorController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{motorController.destroy}" update=":growl,datalist" disabled="#{empty motorController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

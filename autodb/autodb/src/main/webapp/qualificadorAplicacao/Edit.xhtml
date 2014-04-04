@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="QualificadorAplicacaoEditDlg" widgetVar="QualificadorAplicacaoEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditQualificadorAplicacaoTitle}">
+            <h:form id="QualificadorAplicacaoEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{qualificadorAplicacaoController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditQualificadorAplicacaoLabel_codigoQualificadorAplicacao}" for="codigoQualificadorAplicacao" />
+                        <p:inputText id="codigoQualificadorAplicacao" value="#{qualificadorAplicacaoController.selected.codigoQualificadorAplicacao}" title="#{bundle.EditQualificadorAplicacaoTitle_codigoQualificadorAplicacao}" required="true" requiredMessage="#{bundle.EditQualificadorAplicacaoRequiredMessage_codigoQualificadorAplicacao}"/>
+                        <p:outputLabel value="#{bundle.EditQualificadorAplicacaoLabel_codigoUnidadeMedida}" for="codigoUnidadeMedida" />
+                        <p:selectOneMenu id="codigoUnidadeMedida" value="#{qualificadorAplicacaoController.selected.codigoUnidadeMedida}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{unidadeMedidaController.itemsAvailableSelectOne}"
+                                           var="codigoUnidadeMedidaItem"
+                                           itemValue="#{codigoUnidadeMedidaItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditQualificadorAplicacaoLabel_codigoQualificador}" for="codigoQualificador" />
+                        <p:selectOneMenu id="codigoQualificador" value="#{qualificadorAplicacaoController.selected.codigoQualificador}" required="true" requiredMessage="#{bundle.EditQualificadorAplicacaoRequiredMessage_codigoQualificador}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{qualificadorController.itemsAvailableSelectOne}"
+                                           var="codigoQualificadorItem"
+                                           itemValue="#{codigoQualificadorItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditQualificadorAplicacaoLabel_codigoAplicacao}" for="codigoAplicacao" />
+                        <p:selectOneMenu id="codigoAplicacao" value="#{qualificadorAplicacaoController.selected.codigoAplicacao}" required="true" requiredMessage="#{bundle.EditQualificadorAplicacaoRequiredMessage_codigoAplicacao}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{aplicacaoController.itemsAvailableSelectOne}"
+                                           var="codigoAplicacaoItem"
+                                           itemValue="#{codigoAplicacaoItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{qualificadorAplicacaoController.update}" value="#{bundle.Save}" update="display,:QualificadorAplicacaoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'QualificadorAplicacaoEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="QualificadorAplicacaoEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

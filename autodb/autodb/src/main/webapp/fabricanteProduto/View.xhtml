@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="FabricanteProdutoViewDlg" widgetVar="FabricanteProdutoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewFabricanteProdutoTitle}">
+            <h:form id="FabricanteProdutoViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{fabricanteProdutoController.selected != null}">
+                        <h:outputText value="#{bundle.ViewFabricanteProdutoLabel_codigoFabricanteProduto}"/>
+                        <h:outputText value="#{fabricanteProdutoController.selected.codigoFabricanteProduto}" title="#{bundle.ViewFabricanteProdutoTitle_codigoFabricanteProduto}"/>
+                        <h:outputText value="#{bundle.ViewFabricanteProdutoLabel_numero}"/>
+                        <h:outputText value="#{fabricanteProdutoController.selected.numero}" title="#{bundle.ViewFabricanteProdutoTitle_numero}"/>
+                        <h:outputText value="#{bundle.ViewFabricanteProdutoLabel_observacao}"/>
+                        <h:outputText value="#{fabricanteProdutoController.selected.observacao}" title="#{bundle.ViewFabricanteProdutoTitle_observacao}"/>
+                        <h:outputText value="#{bundle.ViewFabricanteProdutoLabel_codigoProduto}"/>
+                        <h:outputText value="#{fabricanteProdutoController.selected.codigoProduto}" title="#{bundle.ViewFabricanteProdutoTitle_codigoProduto}"/>
+                        <h:outputText value="#{bundle.ViewFabricanteProdutoLabel_codigoFabricante}"/>
+                        <h:outputText value="#{fabricanteProdutoController.selected.codigoFabricante}" title="#{bundle.ViewFabricanteProdutoTitle_codigoFabricante}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="FabricanteProdutoViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

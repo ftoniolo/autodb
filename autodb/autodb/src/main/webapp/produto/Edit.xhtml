@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ProdutoEditDlg" widgetVar="ProdutoEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditProdutoTitle}">
+            <h:form id="ProdutoEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{produtoController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditProdutoLabel_codigoProduto}" for="codigoProduto" />
+                        <p:inputText id="codigoProduto" value="#{produtoController.selected.codigoProduto}" title="#{bundle.EditProdutoTitle_codigoProduto}" required="true" requiredMessage="#{bundle.EditProdutoRequiredMessage_codigoProduto}"/>
+                        <p:outputLabel value="#{bundle.EditProdutoLabel_referencia}" for="referencia" />
+                        <p:inputText id="referencia" value="#{produtoController.selected.referencia}" title="#{bundle.EditProdutoTitle_referencia}" required="true" requiredMessage="#{bundle.EditProdutoRequiredMessage_referencia}"/>
+                        <p:outputLabel value="#{bundle.EditProdutoLabel_dataLancamento}" for="dataLancamento" />
+                        <p:calendar id="dataLancamento" pattern="MM/dd/yyyy HH:mm:ss" value="#{produtoController.selected.dataLancamento}" title="#{bundle.EditProdutoTitle_dataLancamento}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditProdutoLabel_dataCadastramento}" for="dataCadastramento" />
+                        <p:calendar id="dataCadastramento" pattern="MM/dd/yyyy HH:mm:ss" value="#{produtoController.selected.dataCadastramento}" title="#{bundle.EditProdutoTitle_dataCadastramento}" required="true" requiredMessage="#{bundle.EditProdutoRequiredMessage_dataCadastramento}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditProdutoLabel_eixo}" for="eixo" />
+                        <p:inputText id="eixo" value="#{produtoController.selected.eixo}" title="#{bundle.EditProdutoTitle_eixo}" />
+                        <p:outputLabel value="#{bundle.EditProdutoLabel_lado}" for="lado" />
+                        <p:inputText id="lado" value="#{produtoController.selected.lado}" title="#{bundle.EditProdutoTitle_lado}" />
+                        <p:outputLabel value="#{bundle.EditProdutoLabel_codigoStatusProduto}" for="codigoStatusProduto" />
+                        <p:selectOneMenu id="codigoStatusProduto" value="#{produtoController.selected.codigoStatusProduto}" required="true" requiredMessage="#{bundle.EditProdutoRequiredMessage_codigoStatusProduto}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{statusProdutoController.itemsAvailableSelectOne}"
+                                           var="codigoStatusProdutoItem"
+                                           itemValue="#{codigoStatusProdutoItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditProdutoLabel_codigoLinhaProduto}" for="codigoLinhaProduto" />
+                        <p:selectOneMenu id="codigoLinhaProduto" value="#{produtoController.selected.codigoLinhaProduto}" required="true" requiredMessage="#{bundle.EditProdutoRequiredMessage_codigoLinhaProduto}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{linhaProdutoController.itemsAvailableSelectOne}"
+                                           var="codigoLinhaProdutoItem"
+                                           itemValue="#{codigoLinhaProdutoItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{produtoController.update}" value="#{bundle.Save}" update="display,:ProdutoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ProdutoEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ProdutoEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

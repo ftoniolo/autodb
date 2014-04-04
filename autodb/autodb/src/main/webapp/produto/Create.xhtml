@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ProdutoCreateDlg" widgetVar="ProdutoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateProdutoTitle}">
+            <h:form id="ProdutoCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{produtoController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateProdutoLabel_codigoProduto}" for="codigoProduto" />
+                        <p:inputText id="codigoProduto" value="#{produtoController.selected.codigoProduto}" title="#{bundle.CreateProdutoTitle_codigoProduto}" required="true" requiredMessage="#{bundle.CreateProdutoRequiredMessage_codigoProduto}"/>
+                        <p:outputLabel value="#{bundle.CreateProdutoLabel_referencia}" for="referencia" />
+                        <p:inputText id="referencia" value="#{produtoController.selected.referencia}" title="#{bundle.CreateProdutoTitle_referencia}" required="true" requiredMessage="#{bundle.CreateProdutoRequiredMessage_referencia}"/>
+                        <p:outputLabel value="#{bundle.CreateProdutoLabel_dataLancamento}" for="dataLancamento" />
+                        <p:calendar id="dataLancamento" pattern="MM/dd/yyyy HH:mm:ss" value="#{produtoController.selected.dataLancamento}" title="#{bundle.EditProdutoTitle_dataLancamento}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateProdutoLabel_dataCadastramento}" for="dataCadastramento" />
+                        <p:calendar id="dataCadastramento" pattern="MM/dd/yyyy HH:mm:ss" value="#{produtoController.selected.dataCadastramento}" title="#{bundle.EditProdutoTitle_dataCadastramento}" required="true" requiredMessage="#{bundle.EditProdutoRequiredMessage_dataCadastramento}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateProdutoLabel_eixo}" for="eixo" />
+                        <p:inputText id="eixo" value="#{produtoController.selected.eixo}" title="#{bundle.CreateProdutoTitle_eixo}" />
+                        <p:outputLabel value="#{bundle.CreateProdutoLabel_lado}" for="lado" />
+                        <p:inputText id="lado" value="#{produtoController.selected.lado}" title="#{bundle.CreateProdutoTitle_lado}" />
+                        <p:outputLabel value="#{bundle.CreateProdutoLabel_codigoStatusProduto}" for="codigoStatusProduto" />
+                        <p:selectOneMenu id="codigoStatusProduto" value="#{produtoController.selected.codigoStatusProduto}" required="true" requiredMessage="#{bundle.EditProdutoRequiredMessage_codigoStatusProduto}">
+                            <f:selectItems value="#{statusProdutoController.itemsAvailableSelectOne}"
+                                           var="codigoStatusProdutoItem"
+                                           itemValue="#{codigoStatusProdutoItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateProdutoLabel_codigoLinhaProduto}" for="codigoLinhaProduto" />
+                        <p:selectOneMenu id="codigoLinhaProduto" value="#{produtoController.selected.codigoLinhaProduto}" required="true" requiredMessage="#{bundle.EditProdutoRequiredMessage_codigoLinhaProduto}">
+                            <f:selectItems value="#{linhaProdutoController.itemsAvailableSelectOne}"
+                                           var="codigoLinhaProdutoItem"
+                                           itemValue="#{codigoLinhaProdutoItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{produtoController.create}" value="#{bundle.Save}" update="display,:ProdutoListForm:datalist,:growl" oncomplete="handleSubmit(args,'ProdutoCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ProdutoCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

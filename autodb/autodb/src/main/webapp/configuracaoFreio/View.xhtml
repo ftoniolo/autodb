@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ConfiguracaoFreioViewDlg" widgetVar="ConfiguracaoFreioViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewConfiguracaoFreioTitle}">
+            <h:form id="ConfiguracaoFreioViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{configuracaoFreioController.selected != null}">
+                        <h:outputText value="#{bundle.ViewConfiguracaoFreioLabel_codigoConfiguracaoFreio}"/>
+                        <h:outputText value="#{configuracaoFreioController.selected.codigoConfiguracaoFreio}" title="#{bundle.ViewConfiguracaoFreioTitle_codigoConfiguracaoFreio}"/>
+                        <h:outputText value="#{bundle.ViewConfiguracaoFreioLabel_codigoTipoFreioTraseiro}"/>
+                        <h:outputText value="#{configuracaoFreioController.selected.codigoTipoFreioTraseiro}" title="#{bundle.ViewConfiguracaoFreioTitle_codigoTipoFreioTraseiro}"/>
+                        <h:outputText value="#{bundle.ViewConfiguracaoFreioLabel_codigoTipoFreioDianteiro}"/>
+                        <h:outputText value="#{configuracaoFreioController.selected.codigoTipoFreioDianteiro}" title="#{bundle.ViewConfiguracaoFreioTitle_codigoTipoFreioDianteiro}"/>
+                        <h:outputText value="#{bundle.ViewConfiguracaoFreioLabel_codigoTipoAssistenciaFreio}"/>
+                        <h:outputText value="#{configuracaoFreioController.selected.codigoTipoAssistenciaFreio}" title="#{bundle.ViewConfiguracaoFreioTitle_codigoTipoAssistenciaFreio}"/>
+                        <h:outputText value="#{bundle.ViewConfiguracaoFreioLabel_codigoFreioABS}"/>
+                        <h:outputText value="#{configuracaoFreioController.selected.codigoFreioABS}" title="#{bundle.ViewConfiguracaoFreioTitle_codigoFreioABS}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="ConfiguracaoFreioViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="FabricanteProdutoEditDlg" widgetVar="FabricanteProdutoEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditFabricanteProdutoTitle}">
+            <h:form id="FabricanteProdutoEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{fabricanteProdutoController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditFabricanteProdutoLabel_codigoFabricanteProduto}" for="codigoFabricanteProduto" />
+                        <p:inputText id="codigoFabricanteProduto" value="#{fabricanteProdutoController.selected.codigoFabricanteProduto}" title="#{bundle.EditFabricanteProdutoTitle_codigoFabricanteProduto}" required="true" requiredMessage="#{bundle.EditFabricanteProdutoRequiredMessage_codigoFabricanteProduto}"/>
+                        <p:outputLabel value="#{bundle.EditFabricanteProdutoLabel_numero}" for="numero" />
+                        <p:inputText id="numero" value="#{fabricanteProdutoController.selected.numero}" title="#{bundle.EditFabricanteProdutoTitle_numero}" required="true" requiredMessage="#{bundle.EditFabricanteProdutoRequiredMessage_numero}"/>
+                        <p:outputLabel value="#{bundle.EditFabricanteProdutoLabel_observacao}" for="observacao" />
+                        <p:inputText id="observacao" value="#{fabricanteProdutoController.selected.observacao}" title="#{bundle.EditFabricanteProdutoTitle_observacao}" />
+                        <p:outputLabel value="#{bundle.EditFabricanteProdutoLabel_codigoProduto}" for="codigoProduto" />
+                        <p:selectOneMenu id="codigoProduto" value="#{fabricanteProdutoController.selected.codigoProduto}" required="true" requiredMessage="#{bundle.EditFabricanteProdutoRequiredMessage_codigoProduto}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{produtoController.itemsAvailableSelectOne}"
+                                           var="codigoProdutoItem"
+                                           itemValue="#{codigoProdutoItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditFabricanteProdutoLabel_codigoFabricante}" for="codigoFabricante" />
+                        <p:selectOneMenu id="codigoFabricante" value="#{fabricanteProdutoController.selected.codigoFabricante}" required="true" requiredMessage="#{bundle.EditFabricanteProdutoRequiredMessage_codigoFabricante}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{fabricanteController.itemsAvailableSelectOne}"
+                                           var="codigoFabricanteItem"
+                                           itemValue="#{codigoFabricanteItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{fabricanteProdutoController.update}" value="#{bundle.Save}" update="display,:FabricanteProdutoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'FabricanteProdutoEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="FabricanteProdutoEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

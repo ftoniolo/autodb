@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="FreioABSEditDlg" widgetVar="FreioABSEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditFreioABSTitle}">
+            <h:form id="FreioABSEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{freioABSController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditFreioABSLabel_codigoFreioABS}" for="codigoFreioABS" />
+                        <p:inputText id="codigoFreioABS" value="#{freioABSController.selected.codigoFreioABS}" title="#{bundle.EditFreioABSTitle_codigoFreioABS}" required="true" requiredMessage="#{bundle.EditFreioABSRequiredMessage_codigoFreioABS}"/>
+                        <p:outputLabel value="#{bundle.EditFreioABSLabel_freioABS}" for="freioABS" />
+                        <p:inputText id="freioABS" value="#{freioABSController.selected.freioABS}" title="#{bundle.EditFreioABSTitle_freioABS}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{freioABSController.update}" value="#{bundle.Save}" update="display,:FreioABSListForm:datalist,:growl" oncomplete="handleSubmit(args, 'FreioABSEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="FreioABSEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

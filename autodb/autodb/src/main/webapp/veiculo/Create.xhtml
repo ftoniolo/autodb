@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="VeiculoCreateDlg" widgetVar="VeiculoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateVeiculoTitle}">
+            <h:form id="VeiculoCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{veiculoController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateVeiculoLabel_codigoVeiculo}" for="codigoVeiculo" />
+                        <p:inputText id="codigoVeiculo" value="#{veiculoController.selected.codigoVeiculo}" title="#{bundle.CreateVeiculoTitle_codigoVeiculo}" required="true" requiredMessage="#{bundle.CreateVeiculoRequiredMessage_codigoVeiculo}"/>
+                        <p:outputLabel value="#{bundle.CreateVeiculoLabel_periodoFabricacao}" for="periodoFabricacao" />
+                        <p:inputText id="periodoFabricacao" value="#{veiculoController.selected.periodoFabricacao}" title="#{bundle.CreateVeiculoTitle_periodoFabricacao}" />
+                        <p:outputLabel value="#{bundle.CreateVeiculoLabel_codigoVeiculoBase}" for="codigoVeiculoBase" />
+                        <p:selectOneMenu id="codigoVeiculoBase" value="#{veiculoController.selected.codigoVeiculoBase}" required="true" requiredMessage="#{bundle.EditVeiculoRequiredMessage_codigoVeiculoBase}">
+                            <f:selectItems value="#{veiculoBaseController.itemsAvailableSelectOne}"
+                                           var="codigoVeiculoBaseItem"
+                                           itemValue="#{codigoVeiculoBaseItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateVeiculoLabel_codigoTipoTransmissao}" for="codigoTipoTransmissao" />
+                        <p:selectOneMenu id="codigoTipoTransmissao" value="#{veiculoController.selected.codigoTipoTransmissao}" >
+                            <f:selectItems value="#{tipoTransmissaoController.itemsAvailableSelectOne}"
+                                           var="codigoTipoTransmissaoItem"
+                                           itemValue="#{codigoTipoTransmissaoItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateVeiculoLabel_codigoTipoTracao}" for="codigoTipoTracao" />
+                        <p:selectOneMenu id="codigoTipoTracao" value="#{veiculoController.selected.codigoTipoTracao}" >
+                            <f:selectItems value="#{tipoTracaoController.itemsAvailableSelectOne}"
+                                           var="codigoTipoTracaoItem"
+                                           itemValue="#{codigoTipoTracaoItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateVeiculoLabel_codigoSubmodelo}" for="codigoSubmodelo" />
+                        <p:selectOneMenu id="codigoSubmodelo" value="#{veiculoController.selected.codigoSubmodelo}" >
+                            <f:selectItems value="#{submodeloController.itemsAvailableSelectOne}"
+                                           var="codigoSubmodeloItem"
+                                           itemValue="#{codigoSubmodeloItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateVeiculoLabel_codigoSistemaDirecao}" for="codigoSistemaDirecao" />
+                        <p:selectOneMenu id="codigoSistemaDirecao" value="#{veiculoController.selected.codigoSistemaDirecao}" >
+                            <f:selectItems value="#{sistemaDirecaoController.itemsAvailableSelectOne}"
+                                           var="codigoSistemaDirecaoItem"
+                                           itemValue="#{codigoSistemaDirecaoItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateVeiculoLabel_codigoPaisFabricacao}" for="codigoPaisFabricacao" />
+                        <p:selectOneMenu id="codigoPaisFabricacao" value="#{veiculoController.selected.codigoPaisFabricacao}" >
+                            <f:selectItems value="#{paisController.itemsAvailableSelectOne}"
+                                           var="codigoPaisFabricacaoItem"
+                                           itemValue="#{codigoPaisFabricacaoItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateVeiculoLabel_codigoMotor}" for="codigoMotor" />
+                        <p:selectOneMenu id="codigoMotor" value="#{veiculoController.selected.codigoMotor}" >
+                            <f:selectItems value="#{motorController.itemsAvailableSelectOne}"
+                                           var="codigoMotorItem"
+                                           itemValue="#{codigoMotorItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateVeiculoLabel_codigoConfiguracaoFreio}" for="codigoConfiguracaoFreio" />
+                        <p:selectOneMenu id="codigoConfiguracaoFreio" value="#{veiculoController.selected.codigoConfiguracaoFreio}" >
+                            <f:selectItems value="#{configuracaoFreioController.itemsAvailableSelectOne}"
+                                           var="codigoConfiguracaoFreioItem"
+                                           itemValue="#{codigoConfiguracaoFreioItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{veiculoController.create}" value="#{bundle.Save}" update="display,:VeiculoListForm:datalist,:growl" oncomplete="handleSubmit(args,'VeiculoCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="VeiculoCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
